@@ -1,4 +1,7 @@
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\App.java
+C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\ast\Expression.java
+C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\ast\VariableExpression.java
+C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\Parser.java
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\Token.java
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\Tokenizer.java
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\TokenType.java
