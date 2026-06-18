@@ -66,6 +66,7 @@ public class Tokenizer {
             }
             word.setLength(0);
         }
+        ans.add(new Token(TokenType.EOF, "EOF"));
         return ans;
     }
 } 

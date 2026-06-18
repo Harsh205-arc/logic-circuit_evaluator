@@ -12,4 +12,8 @@ public class Token{
     public String getValue(){
         return value;
     }
+    @Override
+    public String toString() {
+        return getTokenType() + " -> " + getValue();
+    }
 }

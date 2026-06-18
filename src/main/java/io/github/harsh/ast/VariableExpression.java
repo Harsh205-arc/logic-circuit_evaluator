@@ -7,6 +7,6 @@ public class VariableExpression extends Expression {
     }
     @Override
     public String toString() {
-        return "Variable(" + name + ")";
+        return name;
     }
 }

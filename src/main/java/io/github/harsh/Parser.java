@@ -1,14 +1,16 @@
 package io.github.harsh;
-import io.github.harsh.ast.Expression;
-import io.github.harsh.ast.VariableExpression;
+import io.github.harsh.ast.*;
 
 import java.util.*;
 public class Parser {
+    //initialisation
     private final List<Token> tokens;
     private int current =0;
+    //constructor
     public Parser(List<Token> token){
         this.tokens=token;
     }
+    // utility funcutions
     private Token peek(){
         return tokens.get(current);
     }
@@ -34,14 +36,67 @@ public class Parser {
         }
         return false;
     }
-
+    private Token consume(TokenType type,String message){
+        if(check(type)){
+            return advance();
+        }
+        throw new RuntimeException (message);
+    }
+    //paser starts
     private Expression primary(){
         if(match(TokenType.IDENTIFIER)){
             return new VariableExpression(previous().getValue());
         }
-        throw new RuntimeException("Expected Variable");
+        if(match(TokenType.LPAREN)){
+            Expression expr=or();
+            consume(TokenType.RPAREN, "Expected ')' before expresion" );
+            return expr;
+        }
+        throw new RuntimeException("Invalid input");
     }
-    public Expression parse() {
+    private Expression not(){
+        if(match(TokenType.NOT)){
+            Token op=previous();
+            return new UnaryExpression(op.getTokenType(),not());
+        }
         return primary();
+    }
+    private Expression and() {
+        Expression expr = not();
+        while(match(TokenType.AND) || match(TokenType.NAND)) {
+            Token operator = previous();
+            Expression right = not();
+            expr = new BinaryExpression(
+                expr,
+                operator.getTokenType(),
+                right
+            );
+        }
+        return expr;
+    }
+    private Expression xor(){
+        Expression expr= and();
+        while(match(TokenType.XOR)|| match(TokenType.XNOR)){
+            Token operator= previous();
+            Expression right= and();
+            expr=new BinaryExpression(expr, operator.getTokenType(), right);
+        }
+        return expr;
+    }
+    private Expression or() {
+        Expression expr = xor();
+        while(match(TokenType.OR)) {
+            Token operator = previous();
+            Expression right = xor();
+            expr = new BinaryExpression(expr,operator.getTokenType(),right);
+        }
+        return expr;
+    }    
+    public Expression parse() {
+        Expression expr= or();
+        if(!isAtEnd()){
+            throw new RuntimeException("Unexpected token '"+peek().getValue()+"'");
+        }
+        return expr;
     }
 }
