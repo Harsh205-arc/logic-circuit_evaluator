@@ -11,6 +11,15 @@ public class BinaryExpression extends Expression {
         this.oprator=op;
         this.right=r;
     }
+    public TokenType getOperator(){
+        return oprator;
+    }
+    public Expression getLeft(){
+        return left;
+    }
+    public Expression getRight(){
+        return right;
+    }
     @Override
     public String toString() {
         return "(" + left + " " + oprator + " " + right + ")";

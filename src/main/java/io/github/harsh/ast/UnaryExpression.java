@@ -9,6 +9,12 @@ public class UnaryExpression extends Expression {
         this.oprator=type;
         this.expression=exp;
     }
+    public TokenType getOperator(){
+        return oprator;
+    }
+    public Expression getExpression(){
+        return expression;
+    }
     @Override 
     public String toString(){
         return oprator+" "+ expression;

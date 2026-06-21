@@ -5,6 +5,9 @@ public class VariableExpression extends Expression {
     public VariableExpression(String n){
         name=n;
     }
+    public String getVar(){
+        return name;
+    }
     @Override
     public String toString() {
         return name;
