@@ -1,3 +1,4 @@
+// this whole file is just for testing and debugging porpuses for the backend engine and will be replaced by api in the future
 package io.github.harsh;
 
 import io.github.harsh.ast.Expression;
@@ -10,7 +11,7 @@ public class App {
     public static void main(String[] args) {
 
         Tokenizer tokenizer = new Tokenizer();
-
+        //hardcoded string for testing purposes 
         String input = "A AND B ";
 
         // Tokenize
@@ -28,8 +29,7 @@ public class App {
         System.out.println("Variables: " + variables);
 
         // Generate truth table
-        List<TruthTableRow> table =
-                TruthTableGenerator.generate(expr);
+        List<TruthTableRow> table = TruthTableGenerator.generate(expr);
 
         // Print truth table
         for (TruthTableRow row : table) {
