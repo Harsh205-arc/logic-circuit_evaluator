@@ -8,3 +8,6 @@ C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\Parse
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\Token.java
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\Tokenizer.java
 C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\TokenType.java
+C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\TruthTableGenerator.java
+C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\TruthTableRow.java
+C:\Users\harsh_2bld3\logic-circuit-evaluator\src\main\java\io\github\harsh\VariableCollector.java

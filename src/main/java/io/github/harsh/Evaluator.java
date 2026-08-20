@@ -4,11 +4,9 @@ import java.util.Map;
 
 public class Evaluator {
 
-    public boolean evaluate(
-            Expression expr,
-            Map<String, Boolean> variables) {
+    public boolean evaluate(Expression expr,Map<String, Boolean> variables) {
+        // expr is the result from the parser and variables is the map keeping track of every token
 
-        // Variable node
         if (expr instanceof VariableExpression) {
             VariableExpression var = (VariableExpression) expr;
 
@@ -19,12 +17,10 @@ public class Evaluator {
             return variables.get(var.getVar());
         }
 
-        // Unary node
         if (expr instanceof UnaryExpression) {
             UnaryExpression unary = (UnaryExpression) expr;
-
-            boolean value =
-                    evaluate(unary.getExpression(), variables);
+ 
+            boolean value =evaluate(unary.getExpression(), variables);
 
             switch (unary.getOperator()) {
                 case NOT:
@@ -35,16 +31,11 @@ public class Evaluator {
             }
         }
 
-        // Binary node
         if (expr instanceof BinaryExpression) {
             BinaryExpression binary = (BinaryExpression) expr;
 
-            boolean left =
-                    evaluate(binary.getLeft(), variables);
-
-            boolean right =
-                    evaluate(binary.getRight(), variables);
-
+            boolean left =evaluate(binary.getLeft(), variables);
+            boolean right =evaluate(binary.getRight(), variables);
             switch (binary.getOperator()) {
 
                 case AND:
