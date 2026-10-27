@@ -12,7 +12,7 @@ public class App {
 
         Tokenizer tokenizer = new Tokenizer();
         //hardcoded string for testing purposes 
-        String input = "A AND B ";
+        String input = "(A AND B) OR (NOT C XOR D)";
 
         // Tokenize
         var tokens = tokenizer.getToken(input);
