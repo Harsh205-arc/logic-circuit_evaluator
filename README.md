@@ -94,8 +94,8 @@ The following roadmap illustrates where the project is headed and what has been 
 * [x] Abstract Syntax Tree
 * [x] Evaluator
 * [x] Variable collector
-* [ ] Interactive variable input
-* [ ] Truth-table generation
+* [X] Interactive variable input
+* [X] Truth-table generation
 * [ ] Boolean expression simplification
 * [ ] Circuit representation
 * [ ] Circuit diagram generation
