@@ -36,6 +36,8 @@ Variable Assignments
    Boolean Result
         ↓
  Truth Table / Circuit
+        ↓
+ Circuit Diagram Generator
 
 
 ## Core Features
@@ -55,6 +57,8 @@ Variable Assignments
 * Abstract Syntax Tree (AST) generation
 * Variable collection
 * Boolean expression evaluation
+* Truth table generation 
+* Circuit Diagram Generation
 
 ## Operator Precedence
 
@@ -69,20 +73,69 @@ OR
 ## Project Structure
 
 
-src/
-└── main/
-    └── java/
-        └── io/github/harsh/
-            ├── App.java
-            ├── Tokenizer.java
-            ├── Parser.java
-            ├── Evaluator.java
-            ├── VariableCollector.java
-            └── ast/
-                ├── Expression.java
-                ├── BinaryExpression.java
-                ├── UnaryExpression.java
-                └── VariableExpression.java
+logic-circuit-evaluator/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── io/
+│   │   │       └── github/
+│   │   │           └── harsh/
+│   │   │               │
+│   │   │               ├── ast/
+│   │   │               │   ├── Expression.java
+│   │   │               │   ├── BinaryExpression.java
+│   │   │               │   ├── UnaryExpression.java
+│   │   │               │   └── VariableExpression.java
+│   │   │               │
+│   │   │               ├── circuit/
+│   │   │               │   ├── CircuitNode.java
+│   │   │               │   ├── CircuitConnection.java
+│   │   │               │   ├── CircuitDiagram.java
+│   │   │               │   └── CircuitDiagramGenerator.java
+│   │   │               │
+│   │   │               ├── Token.java
+│   │   │               ├── TokenType.java
+│   │   │               ├── Tokenizer.java
+│   │   │               ├── Parser.java
+│   │   │               ├── Evaluator.java
+│   │   │               ├── EvaluationService.java
+│   │   │               ├── EvaluatorController.java
+│   │   │               ├── EvaluationRequest.java
+│   │   │               ├── TruthTableGenerator.java
+│   │   │               ├── TruthTableRow.java
+│   │   │               └── LogicCircuitEvaluatorApplication.java
+│   │   │
+│   │   └── resources/
+│   │       └── application.properties
+│   │
+│   └── test/
+│       └── java/
+│           └── io/
+│               └── github/
+│                   └── harsh/
+│                       └── circuit/
+│                           └── CircuitDiagramGeneratorTest.java
+│
+├── android-app/
+│   ├── app/
+│   │   └── (tabs)/
+│   │       ├── index.tsx
+│   │       └── explore.tsx
+│   │
+│   ├── components/
+│   ├── services/
+│   │   └── evaluationService.ts
+│   │
+│   ├── assets/
+│   ├── package.json
+│   └── ...
+│
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+├── .gitignore
+└── README.md
 
 
 ## Roadmap
@@ -94,10 +147,10 @@ The following roadmap illustrates where the project is headed and what has been 
 * [x] Abstract Syntax Tree
 * [x] Evaluator
 * [x] Variable collector
-* [ ] Interactive variable input
-* [ ] Truth-table generation
-* [ ] Boolean expression simplification
+* [X] Interactive variable input
+* [X] Truth-table generation
+* [X] Boolean expression simplification
 * [ ] Circuit representation
 * [ ] Circuit diagram generation
-* [ ] Backend API
+* [X] Backend API
 * [ ] Web frontend
