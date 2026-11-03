@@ -1,16 +1,16 @@
 package io.github.harsh;
 
 public class EvaluationRequest {
+
     private String expression;
 
-    public EvaluationRequest(){}
+    public EvaluationRequest() {}
 
-    public void setExperssion(String expression){
-        this.expression=expression;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
-    public String getExpression(){
+    public String getExpression() {
         return expression;
     }
-
 }
