@@ -3,6 +3,8 @@ package io.github.harsh;
 
 import org.springframework.web.bind.annotation.*;
 
+import io.github.harsh.circuit.CircuitDiagram;
+
 import java.util.List;
 
 @RestController
@@ -25,6 +27,15 @@ public class EvaluatorController {
             @RequestBody EvaluationRequest request) {
 
         return evaluationService.evaluate(request.getExpression());
+    }
+
+    @PostMapping("/circuit")
+    public CircuitDiagram generateCircuit(
+            @RequestBody EvaluationRequest request) {
+
+             return evaluationService.generateCircuit(
+            request.getExpression()
+        );
     }
 }
 

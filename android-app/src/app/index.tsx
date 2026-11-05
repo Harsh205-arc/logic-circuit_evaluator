@@ -1,5 +1,12 @@
+import CircuitDiagram from '../components/circuitDiagram';
 
+import type {
+    CircuitDiagram as CircuitDiagramData,
+} from '../../services/circuitService';
+import { generateCircuit } from '../../services/circuitService';
 import { useState } from 'react';
+
+
 import {
   View,
   Text,
@@ -16,6 +23,9 @@ import {
 } from '../../services/evaluationService';
 
 export default function HomeScreen() {
+
+  const [circuit, setCircuit] = useState<CircuitDiagramData | null>(null);
+  const [circuitLoading, setCircuitLoading] = useState(false);
 
   // Stores the expression entered by the user
   const [expression, setExpression] = useState('');
@@ -34,6 +44,7 @@ export default function HomeScreen() {
     setExpression((previous) => previous + operator);
   };
 
+  
   // Sends the expression to our backend
   const handleEvaluate = async () => {
 
@@ -63,6 +74,31 @@ export default function HomeScreen() {
 
     } finally {
       setLoading(false);
+    }
+  };
+  
+  const handleGenerateCircuit = async () => {
+    if (!expression.trim()) {
+        setError('Please enter a Boolean expression.');
+        return;
+    }
+
+    try {
+        setCircuitLoading(true);
+        setError('');
+        setCircuit(null);
+
+        const data = await generateCircuit(expression);
+
+        setCircuit(data);
+    } catch (err) {
+        if (err instanceof Error) {
+            setError(err.message);
+        } else {
+            setError('Circuit generation failed.');
+        }
+    } finally {
+        setCircuitLoading(false);
     }
   };
 
@@ -175,8 +211,20 @@ export default function HomeScreen() {
           )}
         </TouchableOpacity>
 
+        <TouchableOpacity
+            style={styles.evaluateButton}
+            onPress={handleGenerateCircuit}
+            disabled={circuitLoading}
+        >
+            {circuitLoading ? (
+                <ActivityIndicator color="#FFFFFF" />
+            ) : (
+                <Text style={styles.evaluateText}>
+                    Generate Circuit
+                </Text>
+            )}
+      </TouchableOpacity>
       </View>
-
       {/* Results section */}
       <View style={styles.resultsSection}>
 
@@ -262,9 +310,12 @@ export default function HomeScreen() {
         )}
 
       </View>
-
+      {circuit && (
+        <CircuitDiagram diagram={circuit} />
+      )}
     </ScrollView>
   );
+
 }
 
 const styles = StyleSheet.create({
